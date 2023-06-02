@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <title>Todo App</title>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <ul>
+      <% for(let i = 0; i < tasks.length; i++) { %>
+      <li>
+        <%= tasks[i].name %>
+        <form
+          action="/delete/<%= tasks[i].id %>?_method=DELETE"
+          method="post"
+          style="display: inline"
+        >
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      <% } %>
+    </ul>
+
+    <form action="/add" method="post">
+      <input type="text" name="task" placeholder="Add a new task" required />
+      <button type="submit">Add</button>
+    </form>
+  </body>
+</html>
